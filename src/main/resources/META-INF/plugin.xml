@@ -15,4 +15,9 @@
     <applicationListeners>
         <listener class="com.github.bukunmiola.vdetekt.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
     </applicationListeners>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <annotator language="JAVA" implementationClass="com.github.bukunmiola.vdetekt.MyAnnotator"/>
+    </extensions>
+
 </idea-plugin>

@@ -19,12 +19,18 @@ version = properties("pluginVersion").get()
 // Configure project's dependencies
 repositories {
     mavenCentral()
+    maven("https://www.jetbrains.com/intellij-repository/releases")
+
 }
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
 //    implementation(libs.annotations)
+//    IntelliJ IDEA Community Edition IC-223.8214.52
+    implementation("com.jetbrains.intellij.idea:ideaIC:223.8214.52")  // Use the appropriate version
+//    implementation("com.jetbrains.intellij.platform:analysis-api:223.8214.52")
 }
+
 
 // Set the JVM language level used to build the project.
 kotlin {
