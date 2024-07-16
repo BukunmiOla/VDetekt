@@ -37,6 +37,7 @@ Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file
 
     <extensions defaultExtensionNs="com.intellij">
         <annotator language="kotlin" implementationClass="com.github.bukunmiola.vdetekt.KotlinAnnotator"/>
+        <annotator language="kotlin" implementationClass="com.github.bukunmiola.vdetekt.feature.SQLInjectionCheck"/>
     </extensions>
 
 </idea-plugin>
