@@ -27,7 +27,7 @@ repositories {
 dependencies {
 //    implementation(libs.annotations)
 //    IntelliJ IDEA Community Edition IC-223.8214.52
-    implementation("com.jetbrains.intellij.idea:ideaIC:223.8214.52")  // Use the appropriate version
+    implementation("com.jetbrains.intellij.idea:ideaIC:2024.2.0.1")  // Use the appropriate version
 //    implementation("com.jetbrains.intellij.platform:analysis-api:223.8214.52")
 }
 
