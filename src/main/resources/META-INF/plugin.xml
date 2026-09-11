@@ -3,11 +3,24 @@ Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file
 <idea-plugin>
     <id>com.github.bukunmiola.vdetekt</id>
     <name>VDetekt</name>
-    <vendor>bukunmiola</vendor>
+    <version>1.0</version>
+    <vendor email="ebukunmiola@gmail.com" url="https://www.github.com/bukunmiola">Bukunmi Ola</vendor>
 
-    <depends>com.intellij.modules.platform</depends>
+    <description>
+        This plugin will help make sure you don't introduce security vulnerabilities into
+        your source code whether knowingly or unknowingly
+    </description>
+
+    <change-notes>
+        - SQL injection vulnerability highlight\n
+        - Hardcoded secret vulnerability highlight
+    </change-notes>
+
     <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.androidstudio</depends>
     <depends>com.intellij.modules.xml</depends>
+    <depends>com.intellij.modules.java</depends>
     <depends>org.jetbrains.kotlin</depends>
 
 
@@ -17,27 +30,19 @@ Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file
         <toolWindow factoryClass="com.github.bukunmiola.vdetekt.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.bukunmiola.vdetekt.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
-
-<!--    <extensions defaultExtensionNs="com.intellij">-->
-<!--        <lang.syntaxHighlighterFactory language="kotlin" implementationClass="com.github.bukunmiola.vdetekt.KotlinSyntaxHighlighterFactory"-->
-<!--                                       />-->
-<!--    </extensions>-->
-
-<!--    <extensions defaultExtensionNs="org.jetbrains.kotlin">-->
-<!--        <annotator language="kotlin" implementationClass="com.github.bukunmiola.vdetekt.MyAnnotator"/>-->
-<!--        <annotator language="JAVA" implementationClass="com.github.bukunmiola.vdetekt.MyAnnotator"/>-->
-<!--    </extensions>-->
+<!--    <applicationListeners>-->
+<!--        <listener class="com.github.bukunmiola.vdetekt.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>-->
+<!--    </applicationListeners>-->
 
     <extensions defaultExtensionNs="com.intellij">
-        <annotator language="JAVA" implementationClass="com.github.bukunmiola.vdetekt.MyAnnotator"/>
+        <annotator language="JAVA" implementationClass="com.github.bukunmiola.vdetekt.java.MyAnnotator"/>
     </extensions>
 
     <extensions defaultExtensionNs="com.intellij">
         <annotator language="kotlin" implementationClass="com.github.bukunmiola.vdetekt.KotlinAnnotator"/>
         <annotator language="kotlin" implementationClass="com.github.bukunmiola.vdetekt.feature.SQLInjectionCheck"/>
+        <annotator language="kotlin" implementationClass="com.github.bukunmiola.vdetekt.feature.SensitiveStringCheck"/>
+        <annotator language="kotlin" implementationClass="com.github.bukunmiola.vdetekt.feature.MethodAnnotator"/>
     </extensions>
 
 </idea-plugin>

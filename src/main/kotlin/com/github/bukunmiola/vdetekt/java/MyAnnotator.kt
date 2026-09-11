@@ -1,4 +1,4 @@
-package com.github.bukunmiola.vdetekt
+package com.github.bukunmiola.vdetekt.java
 
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
