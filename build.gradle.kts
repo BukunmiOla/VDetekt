@@ -21,15 +21,12 @@ repositories {
     mavenCentral()
     maven("https://www.jetbrains.com/intellij-repository/releases")
     maven("https://plugins.gradle.org/m2/")
-
 }
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
     implementation("com.gradle:develocity-gradle-plugin:3.17.5")
 //    implementation(libs.annotations)
-//    IntelliJ IDEA Community Edition IC-223.8214.52
-    implementation("com.jetbrains.intellij.idea:ideaIC:241.15989.150")  // Use the appropriate version
 //    implementation("com.jetbrains.intellij.platform:analysis-api:223.8214.52")
 }
 
@@ -48,7 +45,7 @@ intellij {
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
     plugins = properties("platformPlugins").map { it.split(',').map(String::trim).filter(String::isNotEmpty) }
-}
+   }
 
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
@@ -124,5 +121,10 @@ tasks {
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
         channels = properties("pluginVersion").map { listOf(it.substringAfter('-', "").substringBefore('.').ifEmpty { "default" }) }
+    }
+
+    // Disable the buildSearchableOptions task
+    buildSearchableOptions {
+        enabled = false
     }
 }

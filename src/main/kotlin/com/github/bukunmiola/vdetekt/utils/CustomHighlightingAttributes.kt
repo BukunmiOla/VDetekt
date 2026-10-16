@@ -1,4 +1,4 @@
-package com.github.bukunmiola.vdetekt
+package com.github.bukunmiola.vdetekt.utils
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
@@ -42,7 +42,11 @@ object CustomHighlightingAttributes {
 
     val RED_UNDERLINE: TextAttributesKey = TextAttributesKey.createTextAttributesKey(
         "CUSTOM_RED_UNDERLINE",
-        TextAttributes(null, null, JBColor.RED, EffectType.LINE_UNDERSCORE, 0)
+        TextAttributes(JBColor.RED, JBColor.LIGHT_GRAY, JBColor.RED, EffectType.WAVE_UNDERSCORE, 0)
+    )
+    val YELLOW_UNDERLINE: TextAttributesKey = TextAttributesKey.createTextAttributesKey(
+        "CUSTOM_RED_UNDERLINE",
+        TextAttributes(null, JBColor.LIGHT_GRAY, JBColor.YELLOW, EffectType.WAVE_UNDERSCORE, 0)
     )
     // Define more attributes as needed
 }

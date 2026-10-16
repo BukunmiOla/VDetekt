@@ -1,5 +1,6 @@
 package com.github.bukunmiola.vdetekt
 
+import com.github.bukunmiola.vdetekt.utils.CustomHighlightingAttributes
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.lang.annotation.HighlightSeverity
