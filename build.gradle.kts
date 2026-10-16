@@ -26,10 +26,6 @@ repositories {
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
     implementation("com.gradle:develocity-gradle-plugin:3.17.5")
-//    implementation(libs.annotations)
-//    IntelliJ IDEA Community Edition IC-223.8214.52
-    implementation("com.jetbrains.intellij.idea:ideaIC:2024.2.1")  // Use the appropriate version
-//    implementation("com.jetbrains.intellij.platform:analysis-api:223.8214.52")
 }
 
 
@@ -56,12 +52,24 @@ changelog {
 }
 
 // Configure Gradle Kover Plugin - read more: https://github.com/Kotlin/kotlinx-kover#configuration
-koverReport {
-    defaults {
-        xml {
-            onCheck = true
+kover {
+    reports {
+        total {
+            xml {
+                onCheck.set(true)
+                xmlFile.set(layout.buildDirectory.file("reports/kover/report.xml"))
+            }
         }
     }
+}
+
+// Reuse the IntelliJ-configured test task so acceptance scenarios have exactly the
+// same sandbox, instrumented classes and JVM setup as the existing fixture tests.
+// This entry point runs acceptance scenarios AND the existing regression tests.
+tasks.register("acceptanceTest") {
+    group = "verification"
+    description = "Runs M1 acceptance scenarios and the existing fixture regression tests."
+    dependsOn(tasks.named("test"))
 }
 
 tasks {
