@@ -1,7 +1,5 @@
 package com.github.bukunmiola.vdetekt.extensions
 
-import ai.grazie.nlp.utils.dropWhitespaces
-import org.jetbrains.kotlin.idea.base.util.collapseSpaces
 import java.util.*
 import kotlin.math.log2
 
@@ -45,14 +43,14 @@ fun String.isBase64Encoded(): Boolean {
     return try {
         val decoded = Base64.getDecoder().decode(this)
         Base64.getEncoder().encodeToString(decoded) == this
-    } catch (e: IllegalArgumentException) {
+    } catch (_: IllegalArgumentException) {
         false
     }
 }
 
 fun String.calculateEntropy(): Double {
     val frequency = this.groupingBy { it }.eachCount().mapValues { it.value.toDouble() / length }
-    return -frequency.values.sumByDouble { it * log2(it) }
+    return -frequency.values.sumOf { it * log2(it) }
 }
 
 fun String.isEncryptedString(): Boolean {
